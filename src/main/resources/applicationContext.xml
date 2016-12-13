@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    ">
+    <!--1配置Bean使用属性注入，要有空构造器或没有构造器-->
+    <bean id="helloWorld" class="cn.hjycjc.spring.spring_basis.hello_world.HelloWorld">
+    	 <property name="name" value="spring_basis_first"></property>
+    </bean>
+    <!-- 2配置Bean使用构造器注入 ，必须有含参数的构造器-->
+    <bean id="car" class="cn.hjycjc.spring.spring_basis.hello_world.Car">
+    	<constructor-arg value="Audi" index="0" type="String"></constructor-arg>
+    	<constructor-arg value="Shanghai" index="1" type="String"></constructor-arg>
+    	<constructor-arg index="2" type="int">
+    		<value>300000</value>
+    	</constructor-arg>
+    	<constructor-arg value="260" index="3" type="int"></constructor-arg>
+	</bean>
+    <!--bean之间的引用  -->
+    <bean id="person" class="cn.hjycjc.spring.spring_basis.hello_world.Person">
+    	<property name="name" value="Tom"></property>
+    	<property name="age" value="19"></property>
+    	<property name="car" ref="car"></property>
+    </bean>
+    
+    <!--配置bean中有集合属性  -->
+    <bean id="oldPerson" class="cn.hjycjc.spring.spring_basis.hello_world.collections.Person">
+    	<property name="name" value="Roy"></property>
+    	<property name="age" value="39"></property>
+    	<property name="cars">
+    		<list>
+    			<ref bean="car"/>
+    			<ref bean="car"/>
+    		</list>
+    	</property>
+    </bean>
+    <!--配置bean中有map集合属性  -->
+        <bean id="person2" class="cn.hjycjc.spring.spring_basis.hello_world.collections.Person2">
+    	<property name="name" value="jack"></property>
+    	<property name="age" value="48"></property>
+    	<property name="cars">
+    		<map>
+    			<entry key="car1" value-ref="car"></entry>
+    			<entry key="car2" value-ref="car"></entry>
+    		</map>
+    	</property>
+    </bean>
+    <!-- 配置单例的bean集合，需要引入util命名空间 -->
+    <util:list id="cars">
+    	<ref bean="car"/>
+    	<ref bean="car"/>
+    </util:list>
+     <bean id="oldPerson2" class="cn.hjycjc.spring.spring_basis.hello_world.collections.Person">
+     	<property name="name" value="rose"></property>
+     	<property name="age" value="67"></property>
+     	<property name="cars" ref="cars"></property>
+     </bean>
+     <!-- 通过p命名空间为bean的属性赋值，需要先导入p命名空间 -->
+     
+     <bean id="helloWorld2" class="cn.hjycjc.spring.spring_basis.hello_world.HelloWorld"
+     p:name="Queen">
+     </bean>
+    <!--配置properties属性值  -->
+    <!--使用props和prop实现  -->
+</beans>
