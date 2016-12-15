@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    ">
+ 	<!--通过工厂的静态的方法，去配置Bean,返回工厂创建的实例  -->
+ 	<!-- class:是指向静态工厂 -->
+ 	<bean id="car_f" class="cn.hjycjc.spring.spring_basis.hello_world.bean_factory.StaticCarFactory" 
+ 	factory-method="getCar">
+ 		<!--必须使用构造器，  -->
+ 		<constructor-arg value="AUDI"></constructor-arg>
+ 	</bean>
+ 	<!-- 通过实例工厂的（非静态）方法，来获取Bean实例 -->
+ 	<!-- 需要先配置一个实例工厂的Bean，再使用实例工厂去配置Bean -->
+ 	<bean id="carFactory" class="cn.hjycjc.spring.spring_basis.hello_world.bean_factory.InstanceCarFactory">
+ 	</bean>
+ 	<!--通过其它Bean;配置工厂的方法配置bean  -->
+ 	<bean id="car" factory-bean="carFactory" factory-method="getCar">
+ 		<constructor-arg value="BMW"></constructor-arg>
+ 	</bean>
+ 	<!--实现Spring提供的 FactoryBean接口，Spring提供的Bean工厂配置Bean-->
+ 	<bean id="car1" class="cn.hjycjc.spring.spring_basis.hello_world.bean_factory.FactoryBeanImpl" ></bean>
+</beans>

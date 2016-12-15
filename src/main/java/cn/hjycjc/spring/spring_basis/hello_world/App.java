@@ -28,6 +28,10 @@ public class App {
 		Car car=(Car) ctx.getBean("car");
 		System.out.println(car.toString());
 		
+		Pig pig =new Pig();
+		pig.setName("猪");
+		System.out.println(pig.toString());
+		
 		HelloWorld helloWorld2 =(HelloWorld) ctx.getBean("helloWorld2");
 		helloWorld2.hello();
 		
