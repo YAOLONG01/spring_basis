@@ -44,7 +44,18 @@ public class ArithmeticCalculatorLoggingProxy {
 			//反射机制
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				System.out.println("Dynamic -> The method "+ method.getName()+" begins with"+Arrays.asList(args));
-				Object result =method.invoke(targe, args);
+				Object result =null;
+				try{
+					//可以放前置通知
+					result=method.invoke(targe, args);
+					//返回通知
+					
+				}catch (Exception e){
+					System.out.println(e);
+					//异常通知
+				}
+				//后置通知，获取不到返回值。
+				//
 				System.out.println("Dynamic ->The method "+ method.getName()+" end with "+result);
 				return result;
 			}
