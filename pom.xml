@@ -36,9 +36,20 @@
       <groupId>org.springframework</groupId> 
       <artifactId>spring-jdbc</artifactId>
       <version>4.3.2.RELEASE</version>
-     <!--c3p0 -->
     </dependency> 
-    	<dependency>
+    <!--Spring AOP  -->
+    <dependency> 
+      <groupId>org.springframework</groupId> 
+      <artifactId>spring-aop</artifactId>
+      <version>4.3.2.RELEASE</version>
+    </dependency> 
+    <dependency> 
+      <groupId>org.springframework</groupId> 
+      <artifactId>spring-aspects</artifactId>
+      <version>4.3.2.RELEASE</version>
+    </dependency> 
+     <!--c3p0 -->
+    <dependency>
 		<groupId>c3p0</groupId>
 		<artifactId>c3p0</artifactId>
 		<version>0.9.1.2</version>
