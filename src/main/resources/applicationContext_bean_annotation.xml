@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    ">
+    <!-- 指定IOC容器扫描注释@的包 -->
+    <context:component-scan base-package="cn.hjycjc.spring.spring_basis.hello_world.annotation">
+    </context:component-scan>
+    
+    <!--几种扫描的策略  -->
+<!--     resource-pattern指定只扫描cn.hjycjc.spring.spring_basis.hello_world.annotation.repository/*.class的所有class 
+    <context:component-scan base-package="cn.hjycjc.spring.spring_basis.hello_world.annotation"
+    resource-pattern="repository/*.class">
+    </context:component-scan> -->
+    
+<!--     <context:component-scan base-package="cn.hjycjc.spring.spring_basis.hello_world.annotation">
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan> -->
+<!--     <context:component-scan base-package="cn.hjycjc.spring.spring_basis.hello_world.annotation"
+    use-default-filters="false">
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan> -->
+</beans>

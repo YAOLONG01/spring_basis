@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    ">
+   <!--配置Bean使用原型的prototype  -->
+   <!--配置Bean的生命周期，Init和Destory ,注意Bean是单例的时候Destory销毁才由Spring管理 -->
+   <bean id="car" class="cn.hjycjc.spring.spring_basis.hello_world.bean_cycle.Car" p:brand="BaoMa" p:price="1890000"  scope="prototype" 
+   init-method="forInit" destroy-method="forDestory"></bean>
+   <bean id="address" class="cn.hjycjc.spring.spring_basis.hello_world.bean_cycle.Address" destroy-method="forDestory">
+   		<property name="street" value="ShangDi"></property>
+   		<property name="city" value="BeiJing"></property>
+   </bean>
+   <!--配置Bean，BeanPostProcessor是Interface，用自己实现的类BeanPostProcessorImpl,特殊不需要id,自动识别  -->
+   <bean class="cn.hjycjc.spring.spring_basis.hello_world.bean_cycle.BeanPostProcessorImpl"></bean>
+   
+</beans>

@@ -1,9 +1,18 @@
 package cn.hjycjc.spring.spring_basis.hello_world;
-
 public class Car {
 	private String brand;
 	private String corp;
 	private int price;
+	private Object pig;
+	
+	
+	public Object getPig() {
+		return pig;
+	}
+	public void setPig(Person pig) {
+		this.pig = pig;
+	}
+	
 	private int maxSpeed;
 	public String getBrand() {
 		return brand;
