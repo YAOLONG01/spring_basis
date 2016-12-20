@@ -1,25 +1,24 @@
-package cn.hjycjc.spring.spring_basis.transaction.dao.impl;
+package cn.hjycjc.spring.spring_basis.transaction_xml.dao.impl;
 
-import javax.security.auth.login.AccountException;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.stereotype.Repository;
 
 import cn.hjycjc.spring.spring_basis.transaction.BookStockException;
-import cn.hjycjc.spring.spring_basis.transaction.UserAccountException;
-import cn.hjycjc.spring.spring_basis.transaction.dao.BookShopDao;
-import sun.tools.jar.resources.jar;
+import cn.hjycjc.spring.spring_basis.transaction_xml.UserAccountException;
+import cn.hjycjc.spring.spring_basis.transaction_xml.dao.BookShopDao;
 
-//基于JdbcTemplate实现
-@Repository("bookShopDao")
+
+
 public class BookShopDaoImpl implements BookShopDao{
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 	@Override
 	public int findBookPriceByIsbn(String isbn) {
 		
@@ -63,5 +62,4 @@ public class BookShopDaoImpl implements BookShopDao{
 		jdbcTemplate.update(sql,price,userName);
 		
 	}
-	
 }

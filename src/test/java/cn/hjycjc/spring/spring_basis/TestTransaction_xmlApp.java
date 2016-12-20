@@ -7,16 +7,16 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import cn.hjycjc.spring.spring_basis.transaction.dao.BookShopDao;
-import cn.hjycjc.spring.spring_basis.transaction.service.BookShopService;
-import cn.hjycjc.spring.spring_basis.transaction.service.Cashier;
+import cn.hjycjc.spring.spring_basis.transaction_xml.dao.BookShopDao;
+import cn.hjycjc.spring.spring_basis.transaction_xml.service.BookShopService;
+import cn.hjycjc.spring.spring_basis.transaction_xml.service.Cashier;
 
-public class TestTransactionApp {
-	private ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext_jdbcTemplate_transaction_dbProperties.xml");
+public class TestTransaction_xmlApp {
+	private ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext_jdbcTemplate_transaction_dbProperties_xml.xml");
 	
 	private BookShopDao bookShopDao =ctx.getBean(BookShopDao.class);
 	
-	private BookShopService bookShopService=(BookShopService) ctx.getBean("bookShopServiceImpl");
+	private BookShopService bookShopService=(BookShopService) ctx.getBean("bookShopService");
 	
 	private Cashier cashier =ctx.getBean(Cashier.class);
 	
